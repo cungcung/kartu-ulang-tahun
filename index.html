@@ -113,7 +113,7 @@
         background-color: rgba(100, 0, 100, 0.9); /* Warna ungu lebih gelap saat hover */
       }
 
-      /* Responsif untuk tombol musik di layar kecil (Tidak ada perubahan khusus karena sudah di dalam kartu) */
+      /* Responsif untuk tombol musik di layar kecil */
       @media (max-width: 600px) {
         .play-music-btn {
           font-size: 0.9em;
@@ -160,8 +160,7 @@
         id="playMusicBtn"
         class="play-music-btn mt-4" /* Kelas untuk styling, tambahkan margin-top */
       >
-        Putar Musik 🎵
-      </button>
+        Putar Musik 🎵 </button>
     </div>
 
     <script>
@@ -173,6 +172,9 @@
       });
 
       let kartu = document.getElementById("kartu");
+      const birthdayAudio = document.getElementById('birthdayAudio');
+      const playMusicBtn = document.getElementById('playMusicBtn');
+      let isPlaying = false; // Status musik
 
       // Fungsi untuk mengubah isi kartu
       function ubahKartu() {
@@ -197,6 +199,29 @@
           spread: 90,
           origin: { y: 0.7 },
         });
+
+        // ----- KONTROL AUDIO (DIPINDAHKAN KE SINI) -----
+        birthdayAudio.play().catch(error => {
+          console.error("Autoplay prevented:", error);
+          alert("Browser mungkin memblokir pemutaran otomatis. Silakan coba klik lagi atau izinkan pemutaran media.");
+        });
+        isPlaying = true;
+        playMusicBtn.textContent = 'Hentikan Musik 🔇';
+
+        // Tambahkan event listener untuk tombol Hentikan Musik setelah diubah
+        // Ini akan menimpa event listener sebelumnya (jika ada)
+        playMusicBtn.onclick = function() {
+          if (isPlaying) {
+            birthdayAudio.pause();
+            playMusicBtn.textContent = 'Putar Musik 🎵';
+            isPlaying = false;
+          } else {
+            birthdayAudio.play();
+            playMusicBtn.textContent = 'Hentikan Musik 🔇';
+            isPlaying = true;
+          }
+        };
+        // ----- AKHIR KONTROL AUDIO -----
       }
 
       // Fungsi untuk me-refresh halaman (tombol Tutup)
@@ -204,34 +229,12 @@
         location.reload();
       }
 
-      // ----- KONTROL AUDIO -----
-      const birthdayAudio = document.getElementById('birthdayAudio');
-      const playMusicBtn = document.getElementById('playMusicBtn');
-      let isPlaying = false; // Status musik
-
-      // Tambahkan event listener ke tombol Putar Musik
-      playMusicBtn.addEventListener('click', () => {
-        if (isPlaying) {
-          birthdayAudio.pause();
-          playMusicBtn.textContent = 'Putar Musik 🎵';
-        } else {
-          birthdayAudio.play().catch(error => {
-            console.error("Autoplay prevented:", error);
-            // Memberitahu pengguna jika autoplay diblokir (jarang terjadi setelah interaksi)
-            alert("Browser mungkin memblokir pemutaran otomatis. Silakan coba klik lagi atau izinkan pemutaran media.");
-          });
-          playMusicBtn.textContent = 'Hentikan Musik 🔇';
-        }
-        isPlaying = !isPlaying; // Balik status
-      });
-
-      // Opsional: Jika audio selesai putar (misal tanpa loop), kembalikan tombol
-      birthdayAudio.addEventListener('ended', () => {
-        isPlaying = false;
-        playMusicBtn.textContent = 'Putar Musik 🎵';
-      });
-      // ----- AKHIR KONTROL AUDIO -----
-
+      // ----- INISIALISASI AWAL TOMBOL MUSIK (SEBELUM "KLIK DISINI" DITEKAN) -----
+      // Tombol ini tidak akan memutar musik, hanya menunggu ubahKartu() dipanggil
+      playMusicBtn.textContent = 'Putar Musik 🎵';
+      // Anda bisa memberikan fungsi awal di sini, tapi di-overwrite di ubahKartu()
+      // playMusicBtn.onclick = function() { console.log('Tombol musik diklik sebelum kartu dibuka'); };
+      // ----- AKHIR INISIALISASI AWAL TOMBOL MUSIK -----
     </script>
 
     <div class="marquee-container">
