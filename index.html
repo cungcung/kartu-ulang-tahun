@@ -159,9 +159,21 @@
 
       let kartu = document.getElementById("kartu");
       const birthdayAudio = document.getElementById('birthdayAudio'); // Dapatkan elemen audio
+      let isPlaying = false; // Status musik
 
-      // Fungsi untuk mengubah isi kartu
+      // Fungsi untuk mengubah isi kartu DAN MEMUTAR MUSIK
       function ubahKartu() {
+        // --- KONTROL AUDIO (MULAI PUTAR OTOMATIS DI SINI) ---
+        birthdayAudio.play().catch(error => {
+          console.error("Autoplay prevented:", error);
+          // Alert ini akan muncul jika browser memblokir play() meskipun sudah ada interaksi
+          // Biasanya tidak akan muncul karena sudah ada klik pengguna pada tombol utama
+          alert("Browser mungkin memblokir pemutaran otomatis. Silakan coba klik lagi atau izinkan pemutaran media.");
+        });
+        isPlaying = true; // Set status musik menjadi bermain
+        // --- AKHIR KONTROL AUDIO ---
+
+        // Sekarang ubah innerHTML kartu
         kartu.innerHTML = `
           <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-yellow-500 card-text-cursive" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
             Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
@@ -174,8 +186,7 @@
             id="playMusicBtnInside" /* ID unik untuk tombol yang dibuat dinamis */
             class="p-3 bg-purple-500 text-white rounded-lg mt-5 hover:bg-purple-600 transition ease-in w-full text-lg font-semibold"
           >
-            Putar Musik 🎵
-          </button>
+            Hentikan Musik 🔇 </button>
           <button
             class="p-3 bg-teal-400 text-white rounded-lg mt-5 hover:bg-teal-500 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
             onclick="refresh()"
@@ -193,21 +204,14 @@
         // ----- KONTROL AUDIO (untuk tombol yang baru dibuat) -----
         // Dapatkan referensi tombol musik yang baru dibuat setelah innerHTML diubah
         const newPlayMusicBtn = document.getElementById('playMusicBtnInside');
-        let isPlaying = false; // Status musik baru untuk tombol ini
         
-        // Setel teks awal tombol berdasarkan status isPlaying
-        newPlayMusicBtn.textContent = isPlaying ? 'Hentikan Musik 🔇' : 'Putar Musik 🎵';
-
         // Tambahkan event listener ke tombol musik yang baru dibuat
         newPlayMusicBtn.addEventListener('click', () => {
-          if (isPlaying) {
+          if (isPlaying) { // Jika sedang putar, maka pause
             birthdayAudio.pause();
             newPlayMusicBtn.textContent = 'Putar Musik 🎵';
-          } else {
-            birthdayAudio.play().catch(error => {
-              console.error("Autoplay prevented:", error);
-              alert("Browser mungkin memblokir pemutaran otomatis. Silakan coba klik lagi atau izinkan pemutaran media.");
-            });
+          } else { // Jika tidak putar, maka play
+            birthdayAudio.play(); // Tidak perlu catch lagi karena sudah ada interaksi dengan tombol ini
             newPlayMusicBtn.textContent = 'Hentikan Musik 🔇';
           }
           isPlaying = !isPlaying; // Balik status
