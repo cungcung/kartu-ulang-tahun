@@ -35,6 +35,35 @@
           top: 10px; /* Lebih ke atas lagi di mobile */
         }
       }
+
+      /* CSS untuk tulisan berjalan (marquee) */
+      .marquee-container {
+        position: fixed; /* Posisikan tetap di layar */
+        bottom: 0; /* Tempelkan di bagian paling bawah */
+        left: 0;
+        width: 100%; /* Lebar penuh layar */
+        background-color: rgba(0, 0, 0, 0.5); /* Background transparan agar tulisan lebih jelas */
+        padding: 8px 0; /* Padding atas dan bawah */
+        z-index: 100; /* Pastikan di atas elemen lain */
+        overflow: hidden; /* Penting untuk marquee */
+      }
+
+      .marquee-text {
+        font-size: 1.2em; /* Ukuran font tulisan berjalan */
+        color: #fff; /* Warna teks putih */
+        font-weight: bold;
+        white-space: nowrap; /* Penting: mencegah teks patah baris */
+      }
+
+      /* Responsif untuk tulisan berjalan di layar lebih kecil */
+      @media (max-width: 600px) {
+        .marquee-container {
+          padding: 5px 0;
+        }
+        .marquee-text {
+          font-size: 0.9em; /* Kecilkan font di layar kecil */
+        }
+      }
     </style>
   </head>
   <body
@@ -42,7 +71,7 @@
       background-image: url('foto_ultah_kevin.png'); /* PASTIKAN NAMA FILE DAN EKSTENSI BENAR */
       background-size: cover; /* Untuk menutupi seluruh area */
       background-repeat: no-repeat; /* Agar gambar tidak diulang */
-      background-position: center 59%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
+      background-position: center 50%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
     "
     class="flex justify-center h-screen items-center"
   >
@@ -108,5 +137,11 @@
         location.reload();
       }
     </script>
+
+    <div class="marquee-container">
+      <marquee behavior="scroll" direction="left" scrollamount="5">
+        <span class="marquee-text">Selamat Ulang Tahun Anakku Kevin! Semoga hari ini penuh kebahagiaan dan tawa! 🎉🎂</span>
+      </marquee>
+    </div>
   </body>
 </html>
