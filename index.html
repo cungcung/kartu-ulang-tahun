@@ -94,26 +94,26 @@
       /* CSS untuk tombol Putar Musik di luar kotak */
       .play-music-btn {
         position: fixed; /* Tetap di layar saat scroll */
-        bottom: 70px; /* Jarak dari bawah (di atas marquee jika ada) */
+        bottom: 20px; /* Jarak dari bawah diubah jadi lebih kecil untuk debugging */
         left: 50%; /* Tengah horizontal */
         transform: translateX(-50%); /* Geser ke tengah */
-        z-index: 101; /* Pastikan di atas marquee dan kartu */
+        z-index: 9999; /* Tingkatkan z-index ke nilai sangat tinggi untuk debugging */
         
         /* Gaya dari tombol */
-        padding: 10px 20px; /* Padding lebih besar */
-        background-color: rgba(128, 0, 128, 0.8); /* Warna ungu transparan */
+        padding: 10px 20px;
+        background-color: rgba(128, 0, 128, 0.9) !important; /* Warna ungu lebih gelap, pakai !important untuk memastikan terlihat */
         color: white;
-        border-radius: 10px; /* Sudut membulat */
+        border-radius: 10px;
         font-size: 1.1em;
         font-weight: bold;
-        border: none;
+        border: 3px solid red !important; /* TAMBAH BORDER MERAH TEBAL UNTUK DEBUGGING */
         cursor: pointer;
         transition: background-color 0.3s ease;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan untuk menonjolkan */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       }
 
       .play-music-btn:hover {
-        background-color: rgba(100, 0, 100, 0.9); /* Warna ungu lebih gelap saat hover */
+        background-color: rgba(100, 0, 100, 1) !important; /* Warna ungu lebih gelap saat hover */
       }
 
       /* Responsif untuk tombol musik di layar kecil */
