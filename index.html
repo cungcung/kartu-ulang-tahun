@@ -76,23 +76,6 @@
     .glow-button {
       box-shadow: 0 0 10px #38bdf8, 0 0 20px #0ea5e9;
     }
-
-    .typewriter {
-      overflow: hidden;
-      border-right: .15em solid orange;
-      white-space: nowrap;
-      animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: orange }
-    }
   </style>
 </head>
 
@@ -122,9 +105,17 @@
     let isPlaying = false;
 
     function ubahKartu() {
+      // Jalankan audio saat tombol diklik
+      birthdayAudio.play().then(() => {
+        isPlaying = true;
+      }).catch(err => {
+        console.warn("Audio autoplay diblokir, user perlu klik manual");
+      });
+
+      // Ubah isi kartu
       kartu.innerHTML = `
         <div class="animate__animated animate__zoomIn">
-          <h1 class="font-semibold text-yellow-500 card-text-cursive text-xl md:text-2xl typewriter" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+          <h1 class="font-semibold text-yellow-500 card-text-cursive text-xl md:text-2xl" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
             Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
             rezeki lancar, dan segala impian jadi kenyataan. Semoga panjang umur dan sehat selalu! 🎉🎂
           </h1>
@@ -133,7 +124,7 @@
           </h2>
           <button id="playMusicBtnInside"
             class="p-3 bg-purple-500 text-white rounded-lg mt-5 hover:bg-purple-600 transition w-full text-lg font-semibold glow-button">
-            Putar Musik 🎵
+            Hentikan Musik 🔇
           </button>
           <button onclick="refresh()"
             class="p-3 bg-teal-400 text-white rounded-lg mt-5 hover:bg-teal-500 transition w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold">
@@ -141,19 +132,8 @@
           </button>
         </div>`;
 
-      confetti({ particleCount: 200, spread: 100, origin: { y: 0.7 } });
-
+      // Event untuk tombol musik
       const playBtn = document.getElementById("playMusicBtnInside");
-
-      birthdayAudio.play().then(() => {
-        isPlaying = true;
-        playBtn.textContent = "Hentikan Musik 🔇";
-      }).catch(err => {
-        console.warn("Autoplay blocked:", err);
-        isPlaying = false;
-        playBtn.textContent = "Putar Musik 🎵";
-      });
-
       playBtn.addEventListener("click", () => {
         if (isPlaying) {
           birthdayAudio.pause();
@@ -161,12 +141,13 @@
         } else {
           birthdayAudio.play().then(() => {
             playBtn.textContent = "Hentikan Musik 🔇";
-          }).catch(() => {
-            alert("Gagal memutar musik.");
           });
         }
         isPlaying = !isPlaying;
       });
+
+      // Confetti saat isi berubah
+      confetti({ particleCount: 200, spread: 100, origin: { y: 0.7 } });
     }
 
     function refresh() {
@@ -181,4 +162,3 @@
   </div>
 </body>
 </html>
-
