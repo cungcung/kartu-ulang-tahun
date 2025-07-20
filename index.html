@@ -97,7 +97,7 @@
       background-image: url('foto_ultah_kevin.png'); /* PASTIKAN NAMA FILE DAN EKSTENSI BENAR */
       background-size: cover; /* Untuk menutupi seluruh area */
       background-repeat: no-repeat; /* Agar gambar tidak diulang */
-      background-position: center 59%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
+      background-position: center 50%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
     "
     class="flex justify-center h-screen items-center"
   >
@@ -116,6 +116,16 @@
       >
         Kevin
       </h1>
+
+      <audio id="birthdayAudio" src="happy_birthday.mp3" loop preload="auto"></audio>
+      
+      <button
+        id="playMusicBtn"
+        class="p-2 bg-purple-500 text-white rounded-lg mt-4 hover:bg-purple-600 transition ease-in w-full text-md font-semibold"
+      >
+        Putar Musik 🎵
+      </button>
+
       <button
         class="p-3 bg-teal-500 text-white rounded-lg mt-6 hover:bg-teal-600 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
         onclick="ubahKartu()"
@@ -163,6 +173,35 @@
       function refresh() {
         location.reload();
       }
+
+      // ----- KONTROL AUDIO -----
+      const birthdayAudio = document.getElementById('birthdayAudio');
+      const playMusicBtn = document.getElementById('playMusicBtn');
+      let isPlaying = false; // Status musik
+
+      // Tambahkan event listener ke tombol Putar Musik
+      playMusicBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          birthdayAudio.pause();
+          playMusicBtn.textContent = 'Putar Musik 🎵';
+        } else {
+          birthdayAudio.play().catch(error => {
+            console.error("Autoplay prevented:", error);
+            // Memberitahu pengguna jika autoplay diblokir (jarang terjadi setelah interaksi)
+            alert("Browser mungkin memblokir pemutaran otomatis. Silakan coba klik lagi atau izinkan pemutaran media.");
+          });
+          playMusicBtn.textContent = 'Hentikan Musik 🔇';
+        }
+        isPlaying = !isPlaying; // Balik status
+      });
+
+      // Opsional: Jika audio selesai putar (misal tanpa loop), kembalikan tombol
+      birthdayAudio.addEventListener('ended', () => {
+        isPlaying = false;
+        playMusicBtn.textContent = 'Putar Musik 🎵';
+      });
+      // ----- AKHIR KONTROL AUDIO -----
+
     </script>
 
     <div class="marquee-container">
