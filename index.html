@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,124 +10,116 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* CSS untuk tulisan tanggal di background */
       .tanggal-background {
-        position: absolute; /* Posisikan secara absolut */
-        top: 20px; /* Posisikan 20px dari atas */
-        left: 50%; /* Tetap di tengah horizontal */
-        transform: translateX(-50%); /* Geser ke tengah horizontal, TIDAK MIRING */
-        font-size: 2.5em; /* Ukuran font sedang untuk posisi atas */
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2.5em;
         font-weight: bold;
-        color: rgba(128, 203, 196, 0.7); /* WARNA TEAL TERANG TRANSPAREN */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Bayangan teks lebih halus */
-        z-index: 0; /* Pastikan di belakang kartu utama */
-        pointer-events: none; /* Agar tidak menghalangi klik pada kartu */
-        white-space: nowrap; /* Mencegah teks patah baris */
-        letter-spacing: 0.1em; /* Sedikit jarak antar huruf */
+        color: rgba(128, 203, 196, 0.7);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        z-index: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        letter-spacing: 0.1em;
       }
 
-      /* Responsif untuk layar lebih kecil */
       @media (max-width: 600px) {
         .tanggal-background {
-          font-size: 1.5em; /* Kecilkan font di layar kecil */
-          top: 10px; /* Lebih ke atas lagi di mobile */
+          font-size: 1.5em;
+          top: 10px;
         }
-        /* Penyesuaian font di dalam kartu untuk mobile jika diperlukan */
-        #kartu h1.font-semibold { /* Menargetkan h1 ucapan setelah klik */
-          font-size: 1.2em; /* Ukuran font ucapan utama setelah klik */
+        #kartu h1.font-semibold {
+          font-size: 1.2em;
         }
-        #kartu h2 { /* Menargetkan h2 "Dari Papa" */
-          font-size: 0.9em; /* Ukuran font "Dari Papa" */
+        #kartu h2 {
+          font-size: 0.9em;
         }
         .marquee-text {
-          font-size: 0.8em; /* Ukuran font tulisan berjalan di HP */
+          font-size: 0.8em;
         }
       }
 
-      /* CSS untuk tulisan berjalan (marquee) */
       .marquee-container {
-        position: fixed; /* Posisikan tetap di layar */
-        bottom: 0; /* Tempelkan di bagian paling bawah */
+        position: fixed;
+        bottom: 0;
         left: 0;
-        width: 100%; /* Lebar penuh layar */
-        background-color: rgba(0, 0, 0, 0.5); /* Background transparan agar tulisan lebih jelas */
-        padding: 8px 0; /* Padding atas dan bawah */
-        z-index: 100; /* Pastikan di atas elemen lain */
-        overflow: hidden; /* Penting untuk marquee */
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 8px 0;
+        z-index: 100;
+        overflow: hidden;
       }
 
       .marquee-text {
-        font-size: 1.2em; /* Ukuran font tulisan berjalan */
-        color: rgba(179, 229, 222, 1); /* WARNA TEAL MUDA LEMBUT */
+        font-size: 1.2em;
+        color: rgba(179, 229, 222, 1);
         font-weight: bold;
-        white-space: nowrap; /* Penting: mencegah teks patah baris */
+        white-space: nowrap;
       }
 
-      /* Gaya untuk tulisan sambung (cursive) */
       .card-text-cursive {
-        font-family: 'Dancing Script', cursive; /* Terapkan font sambung */
-      }
-      
-      /* Penyesuaian ukuran font khusus untuk font cursive */
-      #kartu h1.text-3xl.card-text-cursive { /* Untuk Happy Birthday */
-          font-size: 3.5em; /* Contoh penyesuaian ukuran font untuk Happy Birthday */
-      }
-      #kartu h1.text-4xl.card-text-cursive { /* Untuk nama Kevin */
-          font-size: 5em; /* Contoh penyesuaian ukuran font untuk nama Kevin */
-          line-height: 1; /* Mungkin perlu disesuaikan jika huruf terlalu rapat */
+        font-family: 'Dancing Script', cursive;
       }
 
-      /* Responsif untuk font cursive di layar lebih kecil */
+      #kartu h1.text-3xl.card-text-cursive {
+        font-size: 3.5em;
+      }
+
+      #kartu h1.text-4xl.card-text-cursive {
+        font-size: 5em;
+        line-height: 1;
+      }
+
       @media (max-width: 600px) {
         #kartu h1.text-3xl.card-text-cursive {
-            font-size: 2.5em; /* Ukuran di HP untuk Happy Birthday */
+          font-size: 2.5em;
         }
         #kartu h1.text-4xl.card-text-cursive {
-            font-size: 3.5em; /* Ukuran di HP untuk nama Kevin */
+          font-size: 3.5em;
         }
       }
 
-      /* CSS untuk tombol Putar Musik di dalam kotak (Final Style) */
       .play-music-btn {
-        /* Gaya dari tombol */
-        padding: 10px 20px; /* Padding lebih besar */
-        background-color: rgba(128, 0, 128, 0.8); /* Warna ungu transparan */
+        padding: 10px 20px;
+        background-color: rgba(128, 0, 128, 0.8);
         color: white;
-        border-radius: 10px; /* Sudut membulat */
+        border-radius: 10px;
         font-size: 1.1em;
         font-weight: bold;
         border: none;
         cursor: pointer;
         transition: background-color 0.3s ease;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan untuk menonjolkan */
-        width: 100%; /* Agar lebarnya penuh di dalam kotak */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        width: 100%;
       }
 
       .play-music-btn:hover {
-        background-color: rgba(100, 0, 100, 0.9); /* Warna ungu lebih gelap saat hover */
+        background-color: rgba(100, 0, 100, 0.9);
       }
-      /* Catatan: Media query responsif untuk tombol musik tidak lagi relevan karena sudah di dalam kartu */
     </style>
   </head>
+
   <body
     style="
-      background-image: url('foto_ultah_kevin.png'); /* PASTIKAN NAMA FILE DAN EKSTENSI BENAR */
-      background-size: cover; /* Untuk menutupi seluruh area */
-      background-repeat: no-repeat; /* Agar gambar tidak diulang */
-      background-position: center 50%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
+      background-image: url('foto_ultah_kevin.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center 50%;
     "
     class="flex justify-center h-screen items-center"
   >
-    <div class="tanggal-background">
-      04 AGUSTUS 2025
-    </div>
+    <div class="tanggal-background">04 AGUSTUS 2025</div>
 
+    <!-- LATAR BELAKANG KOTAK KARTU LEBIH TRANSPARAN -->
     <div
-      style="background-color: rgba(209, 250, 229, 0.6);" /* LATAR BELAKANG KOTAK KARTU LEBIH TRANSPARAN */
+      style="background-color: rgba(209, 250, 229, 0.6);"
       class="border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-11/12 max-w-sm relative z-10"
       id="kartu"
     >
@@ -146,24 +138,20 @@
       </button>
 
       <audio id="birthdayAudio" src="happy_birthday.mp3" loop preload="auto"></audio>
-      
-      </div>
+    </div>
 
     <script>
-      // Inisialisasi Confetti saat halaman dimuat
       confetti({
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 },
       });
 
-      let kartu = document.getElementById("kartu");
-      const birthdayAudio = document.getElementById('birthdayAudio'); // Dapatkan elemen audio
-      let isPlaying = false; // Status musik
+      const kartu = document.getElementById("kartu");
+      const birthdayAudio = document.getElementById("birthdayAudio");
+      let isPlaying = false;
 
-      // Fungsi untuk mengubah isi kartu DAN MEMUTAR MUSIK
       function ubahKartu() {
-        // Sekarang ubah innerHTML kartu terlebih dahulu
         kartu.innerHTML = `
           <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-yellow-500 card-text-cursive" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
             Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
@@ -173,10 +161,11 @@
             - Dari : Papa -
           </h2>
           <button
-            id="playMusicBtnInside" /* ID unik untuk tombol yang dibuat dinamis */
+            id="playMusicBtnInside"
             class="p-3 bg-purple-500 text-white rounded-lg mt-5 hover:bg-purple-600 transition ease-in w-full text-lg font-semibold"
           >
-            Putar Musik 🎵 </button>
+            Putar Musik 🎵
+          </button>
           <button
             class="p-3 bg-teal-400 text-white rounded-lg mt-5 hover:bg-teal-500 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
             onclick="refresh()"
@@ -184,51 +173,42 @@
             Tutup
           </button>
         `;
-        // Opsional: jalankan confetti lagi saat kartu dibuka
+
         confetti({
           particleCount: 150,
           spread: 90,
           origin: { y: 0.7 },
         });
 
-        // Dapatkan referensi tombol musik yang baru dibuat setelah innerHTML diubah
-        const newPlayMusicBtn = document.getElementById('playMusicBtnInside');
-        
-        // ----- KONTROL AUDIO (COBA PUTAR OTOMATIS DAN ATUR TOMBOL SESUAI HASIL) -----
+        const newPlayMusicBtn = document.getElementById("playMusicBtnInside");
+
         birthdayAudio.play().then(() => {
-          // Musik berhasil diputar secara otomatis
           isPlaying = true;
-          newPlayMusicBtn.textContent = 'Hentikan Musik 🔇';
+          newPlayMusicBtn.textContent = "Hentikan Musik 🔇";
         }).catch(error => {
-          // Musik gagal diputar secara otomatis (karena kebijakan autoplay browser)
           console.error("Autoplay prevented:", error);
           alert("Browser mungkin memblokir pemutaran otomatis. Silakan klik tombol 'Putar Musik' untuk memulainya.");
-          isPlaying = false; // Pastikan status adalah false karena tidak berhasil putar
-          newPlayMusicBtn.textContent = 'Putar Musik 🎵'; // Kembalikan teks ke Putar Musik
+          isPlaying = false;
+          newPlayMusicBtn.textContent = "Putar Musik 🎵";
         });
-        // ----- AKHIR KONTROL AUDIO -----
 
-        // Tambahkan event listener ke tombol musik yang baru dibuat
-        newPlayMusicBtn.addEventListener('click', () => {
-          if (isPlaying) { // Jika sedang putar, maka pause
+        newPlayMusicBtn.addEventListener("click", () => {
+          if (isPlaying) {
             birthdayAudio.pause();
-            newPlayMusicBtn.textContent = 'Putar Musik 🎵';
-          } else { // Jika tidak putar, maka play
+            newPlayMusicBtn.textContent = "Putar Musik 🎵";
+          } else {
             birthdayAudio.play().then(() => {
-              // Berhasil putar setelah diklik manual
-              newPlayMusicBtn.textContent = 'Hentikan Musik 🔇';
+              newPlayMusicBtn.textContent = "Hentikan Musik 🔇";
             }).catch(error => {
-              // Ini jarang terjadi setelah klik manual, tapi untuk jaga-jaga
               console.error("Manual play prevented:", error);
               alert("Gagal memutar musik. Mungkin ada masalah browser.");
-              newPlayMusicBtn.textContent = 'Putar Musik 🎵';
+              newPlayMusicBtn.textContent = "Putar Musik 🎵";
             });
           }
-          isPlaying = !isPlaying; // Balik status
+          isPlaying = !isPlaying;
         });
       }
 
-      // Fungsi untuk me-refresh halaman (tombol Tutup)
       function refresh() {
         location.reload();
       }
@@ -236,7 +216,9 @@
 
     <div class="marquee-container">
       <marquee behavior="scroll" direction="left" scrollamount="5">
-        <span class="marquee-text">Selamat Ulang Tahun Anakku Kevin! Semoga hari ini penuh kebahagiaan dan tawa! 🎉🎂</span>
+        <span class="marquee-text">
+          Selamat Ulang Tahun Anakku Kevin! Semoga hari ini penuh kebahagiaan dan tawa! 🎉🎂
+        </span>
       </marquee>
     </div>
   </body>
