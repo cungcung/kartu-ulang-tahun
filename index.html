@@ -89,27 +89,18 @@
   </head>
 
   <body
-    style="
-      background-image: url('foto_ultah_kevin.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center 59%;
-    "
+    style="background-image: url('foto_ultah_kevin.png'); background-size: cover; background-repeat: no-repeat; background-position: center 59%;"
     class="flex justify-center h-screen items-center"
   >
     <div class="tanggal-background">04 AGUSTUS 2025</div>
 
     <div
-      style="background-color: rgba(209, 250, 229, 0.6);"
+      style="background-color: rgba(255, 255, 255, 0.22); backdrop-filter: blur(4px);"
       class="border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-11/12 max-w-sm relative z-10"
       id="kartu"
     >
       <h1 class="text-3xl text-teal-800 card-text-cursive">Happy Birthday</h1>
-      <h1
-        class="text-4xl text-teal-600 font-bold animate__animated animate__pulse animate__infinite card-text-cursive"
-      >
-        Kevin
-      </h1>
+      <h1 class="text-4xl text-teal-600 font-bold animate__animated animate__pulse animate__infinite card-text-cursive">Kevin</h1>
 
       <button
         class="p-3 bg-teal-500 text-white rounded-lg mt-6 hover:bg-teal-600 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
@@ -122,11 +113,7 @@
     </div>
 
     <script>
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-      });
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
 
       const kartu = document.getElementById("kartu");
       const birthdayAudio = document.getElementById("birthdayAudio");
@@ -155,11 +142,7 @@
           </button>
         `;
 
-        confetti({
-          particleCount: 150,
-          spread: 90,
-          origin: { y: 0.7 },
-        });
+        confetti({ particleCount: 150, spread: 90, origin: { y: 0.7 } });
 
         setTimeout(() => {
           const newPlayMusicBtn = document.getElementById("playMusicBtnInside");
