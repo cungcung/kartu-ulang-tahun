@@ -28,10 +28,10 @@
         letter-spacing: 0.1em; /* Sedikit jarak antar huruf */
       }
 
-      /* Responsif untuk layar lebih kecil (mis. HP) */
+      /* Responsif untuk layar lebih kecil */
       @media (max-width: 600px) {
         .tanggal-background {
-          font-size: 1.5em; /* Kecilkan font di HP */
+          font-size: 1.5em; /* Kecilkan font di layar kecil */
           top: 10px; /* Lebih ke atas lagi di mobile */
         }
         /* Penyesuaian font di dalam kartu untuk mobile jika diperlukan */
@@ -71,7 +71,7 @@
       background-image: url('foto_ultah_kevin.png'); /* PASTIKAN NAMA FILE DAN EKSTENSI BENAR */
       background-size: cover; /* Untuk menutupi seluruh area */
       background-repeat: no-repeat; /* Agar gambar tidak diulang */
-      background-position: center 60%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
+      background-position: center 50%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
     "
     class="flex justify-center h-screen items-center"
   >
@@ -80,7 +80,8 @@
     </div>
 
     <div
-      class="bg-teal-100 border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-11/12 max-w-sm relative z-10"
+      style="background-color: rgba(209, 250, 229, 0.8);" /* LATAR BELAKANG KOTAK KARTU AGAK TRANSPARAN */
+      class="border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-11/12 max-w-sm relative z-10"
       id="kartu"
     >
       <h1 class="text-3xl text-teal-800">Happy Birthday</h1>
@@ -145,3 +146,9 @@
     </div>
   </body>
 </html>
+        font-size: 1.2em; /* Ukuran font tulisan berjalan */
+        color: rgba(179, 229, 222, 1); /* WARNA TEAL MUDA LEMBUT */
+        font-weight: bold;
+        white-space: nowrap; /* Penting: mencegah teks patah baris */
+      }
+    </style>
