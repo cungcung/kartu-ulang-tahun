@@ -80,4 +80,128 @@
       @media (max-width: 600px) {
         #kartu h1.text-3xl.card-text-cursive {
           font-size: 2.5em;
+        }
+        #kartu h1.text-4xl.card-text-cursive {
+          font-size: 3.5em;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    style="
+      background-image: url('foto_ultah_kevin.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center 50%;
+    "
+    class="flex justify-center h-screen items-center"
+  >
+    <div class="tanggal-background">04 AGUSTUS 2025</div>
+
+    <div
+      style="background-color: rgba(209, 250, 229, 0.6);"
+      class="border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-11/12 max-w-sm relative z-10"
+      id="kartu"
+    >
+      <h1 class="text-3xl text-teal-800 card-text-cursive">Happy Birthday</h1>
+      <h1
+        class="text-4xl text-teal-600 font-bold animate__animated animate__pulse animate__infinite card-text-cursive"
+      >
+        Kevin
+      </h1>
+
+      <button
+        class="p-3 bg-teal-500 text-white rounded-lg mt-6 hover:bg-teal-600 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
+        onclick="ubahKartu()"
+      >
+        Klik Disini !
+      </button>
+
+      <audio id="birthdayAudio" src="happy_birthday.mp3" loop preload="auto"></audio>
+    </div>
+
+    <script>
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+
+      const kartu = document.getElementById("kartu");
+      const birthdayAudio = document.getElementById("birthdayAudio");
+      let isPlaying = false;
+
+      function ubahKartu() {
+        kartu.innerHTML = `
+          <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-yellow-500 card-text-cursive" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
+            rezeki lancar, dan segala impian jadi kenyataan. Semoga panjang umur dan sehat selalu! 🎉🎂
+          </h1>
+          <h2 class="mt-3 animate__animated animate__fadeIn text-gray-700 card-text-cursive">
+            - Dari : Papa -
+          </h2>
+          <button
+            id="playMusicBtnInside"
+            class="p-3 bg-purple-500 text-white rounded-lg mt-5 hover:bg-purple-600 transition ease-in w-full text-lg font-semibold"
+          >
+            Putar Musik 🎵
+          </button>
+          <button
+            class="p-3 bg-teal-400 text-white rounded-lg mt-5 hover:bg-teal-500 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
+            onclick="refresh()"
+          >
+            Tutup
+          </button>
+        `;
+
+        confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.7 },
+        });
+
+        setTimeout(() => {
+          const newPlayMusicBtn = document.getElementById("playMusicBtnInside");
+
+          birthdayAudio.play().then(() => {
+            isPlaying = true;
+            newPlayMusicBtn.textContent = "Hentikan Musik 🔇";
+          }).catch(error => {
+            console.warn("Autoplay gagal:", error);
+            alert("Browser mungkin memblokir pemutaran otomatis. Klik tombol 'Putar Musik' untuk memulai.");
+            isPlaying = false;
+            newPlayMusicBtn.textContent = "Putar Musik 🎵";
+          });
+
+          newPlayMusicBtn.addEventListener("click", () => {
+            if (isPlaying) {
+              birthdayAudio.pause();
+              newPlayMusicBtn.textContent = "Putar Musik 🎵";
+            } else {
+              birthdayAudio.play().then(() => {
+                newPlayMusicBtn.textContent = "Hentikan Musik 🔇";
+              }).catch(() => {
+                alert("Gagal memutar musik. Coba periksa file atau pengaturan browser.");
+              });
+            }
+            isPlaying = !isPlaying;
+          });
+        }, 100);
+      }
+
+      function refresh() {
+        location.reload();
+      }
+    </script>
+
+    <div class="marquee-container">
+      <marquee behavior="scroll" direction="left" scrollamount="5">
+        <span class="marquee-text">
+          Selamat Ulang Tahun Anakku Kevin! Semoga hari ini penuh kebahagiaan dan tawa! 🎉🎂
+        </span>
+      </marquee>
+    </div>
+  </body>
+</html>
 
