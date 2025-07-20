@@ -28,11 +28,21 @@
         letter-spacing: 0.1em; /* Sedikit jarak antar huruf */
       }
 
-      /* Responsif untuk layar lebih kecil */
+      /* Responsif untuk layar lebih kecil (mis. HP) */
       @media (max-width: 600px) {
         .tanggal-background {
-          font-size: 1.5em; /* Kecilkan font di layar kecil */
+          font-size: 1.5em; /* Kecilkan font di HP */
           top: 10px; /* Lebih ke atas lagi di mobile */
+        }
+        /* Penyesuaian font di dalam kartu untuk mobile jika diperlukan */
+        #kartu h1.font-semibold { /* Menargetkan h1 ucapan setelah klik */
+          font-size: 1.2em; /* Ukuran font ucapan utama setelah klik */
+        }
+        #kartu h2 { /* Menargetkan h2 "Dari Papa" */
+          font-size: 0.9em; /* Ukuran font "Dari Papa" */
+        }
+        .marquee-text {
+          font-size: 0.8em; /* Ukuran font tulisan berjalan di HP */
         }
       }
 
@@ -48,21 +58,11 @@
         overflow: hidden; /* Penting untuk marquee */
       }
 
- .marquee-text {
-  font-size: 1.2em; /* Ukuran font tulisan berjalan */
-  color: rgba(179, 229, 222, 1); /* Warna teal muda lembut */
-  font-weight: bold;
-  white-space: nowrap; /* Penting: mencegah teks patah baris */
-}
-
-      /* Responsif untuk tulisan berjalan di layar lebih kecil */
-      @media (max-width: 600px) {
-        .marquee-container {
-          padding: 5px 0;
-        }
-        .marquee-text {
-          font-size: 0.9em; /* Kecilkan font di layar kecil */
-        }
+      .marquee-text {
+        font-size: 1.2em; /* Ukuran font tulisan berjalan */
+        color: rgba(179, 229, 222, 1); /* WARNA TEAL MUDA LEMBUT */
+        font-weight: bold;
+        white-space: nowrap; /* Penting: mencegah teks patah baris */
       }
     </style>
   </head>
@@ -71,7 +71,7 @@
       background-image: url('foto_ultah_kevin.png'); /* PASTIKAN NAMA FILE DAN EKSTENSI BENAR */
       background-size: cover; /* Untuk menutupi seluruh area */
       background-repeat: no-repeat; /* Agar gambar tidak diulang */
-      background-position: center 59%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
+      background-position: center 50%; /* SESUAIKAN NILAI INI UNTUK POSISI VERTIKAL ORANG */
     "
     class="flex justify-center h-screen items-center"
   >
@@ -80,7 +80,7 @@
     </div>
 
     <div
-      class="bg-teal-100 border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-80 relative z-10"
+      class="bg-teal-100 border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-11/12 max-w-sm relative z-10"
       id="kartu"
     >
       <h1 class="text-3xl text-teal-800">Happy Birthday</h1>
@@ -110,11 +110,11 @@
       // Fungsi untuk mengubah isi kartu
       function ubahKartu() {
         kartu.innerHTML = `
-          <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-yellow-400">
+          <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-yellow-500">
             Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
             rezeki lancar, dan segala impian jadi kenyataan. Semoga panjang umur dan sehat selalu! 🎉🎂
           </h1>
-          <h2 class="mt-3 animate__animated animate__fadeIn text-blue-700">
+          <h2 class="mt-3 animate__animated animate__fadeIn text-gray-700">
             - Dari : Papa -
           </h2>
           <button
@@ -140,8 +140,4 @@
 
     <div class="marquee-container">
       <marquee behavior="scroll" direction="left" scrollamount="5">
-        <span class="marquee-text">Selamat Ulang Tahun Anakku Kevin! Semoga hari ini penuh kebahagiaan dan tawa! 🎉🎂</span>
-      </marquee>
-    </div>
-  </body>
-</html>
+        <span class
