@@ -91,35 +91,31 @@
         }
       }
 
-      /* CSS untuk tombol Putar Musik di luar kotak */
+      /* CSS untuk tombol Putar Musik di dalam kotak (Final Style) */
       .play-music-btn {
-        position: fixed; /* Tetap di layar saat scroll */
-        bottom: 20px; /* Jarak dari bawah diubah jadi lebih kecil untuk debugging */
-        left: 50%; /* Tengah horizontal */
-        transform: translateX(-50%); /* Geser ke tengah */
-        z-index: 9999; /* Tingkatkan z-index ke nilai sangat tinggi untuk debugging */
+        /* Hapus properti positioning fixed */
         
         /* Gaya dari tombol */
-        padding: 10px 20px;
-        background-color: rgba(128, 0, 128, 0.9) !important; /* Warna ungu lebih gelap, pakai !important untuk memastikan terlihat */
+        padding: 10px 20px; /* Padding lebih besar */
+        background-color: rgba(128, 0, 128, 0.8); /* Warna ungu transparan */
         color: white;
-        border-radius: 10px;
+        border-radius: 10px; /* Sudut membulat */
         font-size: 1.1em;
         font-weight: bold;
-        border: 3px solid red !important; /* TAMBAH BORDER MERAH TEBAL UNTUK DEBUGGING */
+        border: none; /* Hapus border debugging */
         cursor: pointer;
         transition: background-color 0.3s ease;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan untuk menonjolkan */
+        width: 100%; /* Agar lebarnya penuh di dalam kotak */
       }
 
       .play-music-btn:hover {
-        background-color: rgba(100, 0, 100, 1) !important; /* Warna ungu lebih gelap saat hover */
+        background-color: rgba(100, 0, 100, 0.9); /* Warna ungu lebih gelap saat hover */
       }
 
-      /* Responsif untuk tombol musik di layar kecil */
+      /* Responsif untuk tombol musik di layar kecil (Tidak ada perubahan khusus karena sudah di dalam kartu) */
       @media (max-width: 600px) {
         .play-music-btn {
-          bottom: 60px; /* Sesuaikan posisi di HP */
           font-size: 0.9em;
           padding: 8px 15px;
         }
@@ -156,6 +152,15 @@
         onclick="ubahKartu()"
       >
         Klik Disini !
+      </button>
+
+      <audio id="birthdayAudio" src="happy_birthday.mp3" loop preload="auto"></audio>
+      
+      <button
+        id="playMusicBtn"
+        class="play-music-btn mt-4" /* Kelas untuk styling, tambahkan margin-top */
+      >
+        Putar Musik 🎵
       </button>
     </div>
 
