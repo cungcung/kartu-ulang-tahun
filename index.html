@@ -15,23 +15,24 @@
       /* CSS untuk tulisan tanggal di background */
       .tanggal-background {
         position: absolute; /* Posisikan secara absolut */
-        top: 50%; /* Posisikan di tengah vertikal */
-        left: 50%; /* Posisikan di tengah horizontal */
-        transform: translate(-50%, -50%) rotate(-15deg); /* Geser ke tengah dan sedikit putar */
-        font-size: 5em; /* Ukuran font besar */
+        top: 20px; /* Posisikan 20px dari atas */
+        left: 50%; /* Tetap di tengah horizontal */
+        transform: translateX(-50%); /* Geser ke tengah horizontal */
+        font-size: 2em; /* Ukuran font sedang */
         font-weight: bold;
-        color: rgba(255, 255, 255, 0.3); /* Warna putih transparan */
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bayangan teks */
+        color: rgba(255, 255, 255, 0.7); /* Warna putih sedikit lebih tebal */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Bayangan teks lebih halus */
         z-index: 0; /* Pastikan di belakang kartu utama */
         pointer-events: none; /* Agar tidak menghalangi klik pada kartu */
         white-space: nowrap; /* Mencegah teks patah baris */
+        letter-spacing: 0.1em; /* Sedikit jarak antar huruf */
       }
 
       /* Responsif untuk layar lebih kecil */
       @media (max-width: 600px) {
         .tanggal-background {
-          font-size: 2.5em; /* Kecilkan font di layar kecil */
-          transform: translate(-50%, -50%) rotate(-10deg);
+          font-size: 1.5em; /* Kecilkan font di layar kecil */
+          top: 10px;
         }
       }
     </style>
@@ -41,7 +42,7 @@
       background-image: url('foto_ultah_kevin.png'); /* GANTI DENGAN NAMA FILE GAMBAR LOKAL KAMU */
       background-size: cover; /* Untuk menutupi seluruh area */
       background-repeat: no-repeat; /* Agar gambar tidak diulang */
-      background-position: center; /* Untuk memusatkan gambar */
+      background-position: center top; /* Memusatkan gambar dari bagian atas */
     "
     class="flex justify-center h-screen items-center"
   >
