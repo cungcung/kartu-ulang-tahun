@@ -90,7 +90,27 @@
             font-size: 3.5em; /* Ukuran di HP untuk nama Kevin */
         }
       }
-      /* Catatan: Karena tombol Putar Musik dihilangkan, kelas .play-music-btn tidak lagi dibutuhkan CSS-nya */
+
+      /* CSS untuk tombol Putar Musik di dalam kotak (Final Style) */
+      .play-music-btn {
+        /* Gaya dari tombol */
+        padding: 10px 20px; /* Padding lebih besar */
+        background-color: rgba(128, 0, 128, 0.8); /* Warna ungu transparan */
+        color: white;
+        border-radius: 10px; /* Sudut membulat */
+        font-size: 1.1em;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan untuk menonjolkan */
+        width: 100%; /* Agar lebarnya penuh di dalam kotak */
+      }
+
+      .play-music-btn:hover {
+        background-color: rgba(100, 0, 100, 0.9); /* Warna ungu lebih gelap saat hover */
+      }
+      /* Catatan: Media query responsif untuk tombol musik tidak lagi relevan karena sudah di dalam kartu */
     </style>
   </head>
   <body
@@ -125,7 +145,7 @@
         Klik Disini !
       </button>
 
-      <audio id="birthdayAudio" src="happybirthday.mp3" loop preload="auto"></audio>
+      <audio id="birthdayAudio" src="happy_birthday.mp3" loop preload="auto"></audio>
       
       </div>
 
