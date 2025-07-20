@@ -1,219 +1,112 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
-  <head>
-
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>HBD Kevin Dari Papa</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link
-
-      rel="stylesheet"
-
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-
-    />
-
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-
-
-
-    <style>
-
-      /* CSS untuk tulisan tanggal di background */
-
-      .tanggal-background {
-
-        position: absolute; /* Posisikan secara absolut */
-
-        top: 50%; /* Posisikan di tengah vertikal */
-
-        left: 50%; /* Posisikan di tengah horizontal */
-
-        transform: translate(-50%, -50%) rotate(-15deg); /* Geser ke tengah dan sedikit putar */
-
-        font-size: 5em; /* Ukuran font besar */
-
-        font-weight: bold;
-
-        color: rgba(255, 255, 255, 0.3); /* Warna putih transparan */
-
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bayangan teks */
-
-        z-index: 0; /* Pastikan di belakang kartu utama */
-
-        pointer-events: none; /* Agar tidak menghalangi klik pada kartu */
-
-        white-space: nowrap; /* Mencegah teks patah baris */
-
-      }
-
-
-
-      /* Responsif untuk layar lebih kecil */
-
-      @media (max-width: 600px) {
-
-        .tanggal-background {
-
-          font-size: 2.5em; /* Kecilkan font di layar kecil */
-
-          transform: translate(-50%, -50%) rotate(-10deg);
-
-        }
-
-      }
-
-    </style>
-
-  </head>
-
-  <body
-
-    style="
-
-      background-image: url('foto_ultah_kevin.png'); /* GANTI DENGAN NAMA FILE GAMBAR LOKAL KAMU */
-
-      background-size: cover; /* Untuk menutupi seluruh area */
-
-      background-repeat: no-repeat; /* Agar gambar tidak diulang */
-
-      background-position: center; /* Untuk memusatkan gambar */
-
-    "
-
-    class="flex justify-center h-screen items-center"
-
-  >
-
-    <div class="tanggal-background">
-
-      04 AGUSTUS 2025
-
-    </div>
-
-
-
- <div
-
-  class="bg-teal-100 border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-80 relative z-10"
-
-  id="kartu"
-
->
-
-  <h1 class="text-3xl text-teal-800">Happy Birthday</h1>
-
-  <h1
-
-    class="text-4xl text-teal-600 font-bold animate__animated animate__pulse animate__infinite"
-
-  >
-
-    Kevin
-
-  </h1>
-
-  <button
-
-    class="p-3 bg-teal-500 text-white rounded-lg mt-6 hover:bg-teal-600 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
-
-    onclick="ubahKartu()"
-
-  >
-
-    Klik Disini !
-
-  </button>
-
-</div>
-
-
-
-    <script>
-
-      // Inisialisasi Confetti saat halaman dimuat
-
-      confetti({
-
-        particleCount: 100,
-
-        spread: 70,
-
-        origin: { y: 0.6 },
-
-      });
-
-
-
-      let kartu = document.getElementById("kartu");
-
-
-
-     function ubahKartu() {
-
-  kartu.innerHTML = `
-
-    <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-gray-800">
-
-      Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
-
-      rezeki lancar, dan segala impian jadi kenyataan. Semoga panjang umur dan sehat selalu! 🎉🎂
-
-    </h1>
-
-    <h2 class="mt-3 animate__animated animate__fadeIn text-gray-700">
-
-      - Dari : Papa -
-
-    </h2>
-
-    <button
-
-      class="p-3 bg-teal-400 text-white rounded-lg mt-5 hover:bg-teal-500 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
-
-      onclick="refresh()"
-
-    >
-
-      Tutup
-
-    </button>
-
-  `;
-
-  // Opsional: jalankan confetti lagi saat kartu dibuka
-
-  confetti({
-
-    particleCount: 150,
-
-    spread: 90,
-
-    origin: { y: 0.7 },
-
-  });
-
-}
-
-
-
-      // Fungsi untuk me-refresh halaman (tombol Tutup)
-
-      function refresh() {
-
-        location.reload();
-
-      }
-
-    </script>
-
-  </body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HBD Kevin Dari Papa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+
+    <style>
+      /* CSS untuk tulisan tanggal di background */
+      .tanggal-background {
+        position: absolute; /* Posisikan secara absolut */
+        top: 20px; /* Posisikan 20px dari atas */
+        left: 50%; /* Tetap di tengah horizontal */
+        transform: translateX(-50%); /* Geser ke tengah horizontal, tidak miring */
+        font-size: 2em; /* Ukuran font sedang */
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.7); /* Warna putih sedikit lebih tebal dan transparan */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Bayangan teks lebih halus */
+        z-index: 0; /* Pastikan di belakang kartu utama */
+        pointer-events: none; /* Agar tidak menghalangi klik pada kartu */
+        white-space: nowrap; /* Mencegah teks patah baris */
+        letter-spacing: 0.1em; /* Sedikit jarak antar huruf */
+      }
+
+      /* Responsif untuk layar lebih kecil */
+      @media (max-width: 600px) {
+        .tanggal-background {
+          font-size: 1.5em; /* Kecilkan font di layar kecil */
+          top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background-image: url('foto_ultah_kevin.png'); /* PASTIKAN NAMA FILE DAN EKSTENSI BENAR */
+      background-size: cover; /* Untuk menutupi seluruh area */
+      background-repeat: no-repeat; /* Agar gambar tidak diulang */
+      background-position: center top; /* MEMUSATKAN GAMBAR SECARA HORIZONTAL & MENEMPELNYA DI BAGIAN ATAS */
+    "
+    class="flex justify-center h-screen items-center"
+  >
+    <div class="tanggal-background">
+      04 AGUSTUS 2025
+    </div>
+
+    <div
+      class="bg-teal-100 border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-80 relative z-10"
+      id="kartu"
+    >
+      <h1 class="text-3xl text-teal-800">Happy Birthday</h1>
+      <h1
+        class="text-4xl text-teal-600 font-bold animate__animated animate__pulse animate__infinite"
+      >
+        Kevin
+      </h1>
+      <button
+        class="p-3 bg-teal-500 text-white rounded-lg mt-6 hover:bg-teal-600 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
+        onclick="ubahKartu()"
+      >
+        Klik Disini !
+      </button>
+    </div>
+
+    <script>
+      // Inisialisasi Confetti saat halaman dimuat
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+
+      let kartu = document.getElementById("kartu");
+
+      // Fungsi untuk mengubah isi kartu
+      function ubahKartu() {
+        kartu.innerHTML = `
+          <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-gray-800">
+            Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
+            rezeki lancar, dan segala impian jadi kenyataan. Semoga panjang umur dan sehat selalu! 🎉🎂
+          </h1>
+          <h2 class="mt-3 animate__animated animate__fadeIn text-gray-700">
+            - Dari : Papa -
+          </h2>
+          <button
+            class="p-3 bg-teal-400 text-white rounded-lg mt-5 hover:bg-teal-500 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
+            onclick="refresh()"
+          >
+            Tutup
+          </button>
+        `;
+        // Opsional: jalankan confetti lagi saat kartu dibuka
+        confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.7 },
+        });
+      }
+
+      // Fungsi untuk me-refresh halaman (tombol Tutup)
+      function refresh() {
+        location.reload();
+      }
+    </script>
+  </body>
 </html>
