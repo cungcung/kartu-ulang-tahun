@@ -1,161 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HBD Kevin Dari Papa</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      background-image: url('foto_ultah_kevin.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .card-text-cursive {
-      font-family: 'Dancing Script', cursive;
-    }
-
-    .tanggal-background {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2em;
-      font-weight: bold;
-      color: rgba(128, 203, 196, 0.7);
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-      z-index: 0;
-      pointer-events: none;
-      white-space: nowrap;
-      letter-spacing: 0.1em;
-    }
-
-    @media (max-width: 600px) {
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HBD Kevin Dari Papa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
       .tanggal-background {
-        font-size: 1.2em;
-        top: 10px;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2.5em;
+        font-weight: bold;
+        color: rgba(128, 203, 196, 0.7);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        z-index: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        letter-spacing: 0.1em;
       }
 
-      #kartu h1.text-3xl {
-        font-size: 2em;
+      @media (max-width: 600px) {
+        .tanggal-background {
+          font-size: 1.5em;
+          top: 10px;
+        }
+        #kartu h1.font-semibold {
+          font-size: 1.2em;
+        }
+        #kartu h2 {
+          font-size: 0.9em;
+        }
+        .marquee-text {
+          font-size: 0.8em;
+        }
       }
 
-      #kartu h1.text-4xl {
-        font-size: 3em;
+      .marquee-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 8px 0;
+        z-index: 100;
+        overflow: hidden;
       }
 
       .marquee-text {
-        font-size: 0.8em;
+        font-size: 1.2em;
+        color: rgba(179, 229, 222, 1);
+        font-weight: bold;
+        white-space: nowrap;
       }
-    }
 
-    .marquee-container {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 6px 0;
-      z-index: 100;
-      overflow: hidden;
-    }
+      .card-text-cursive {
+        font-family: 'Dancing Script', cursive;
+      }
 
-    .marquee-text {
-      font-size: 1em;
-      color: rgba(179, 229, 222, 1);
-      font-weight: bold;
-      white-space: nowrap;
-    }
-  </style>
-</head>
+      #kartu h1.text-3xl.card-text-cursive {
+        font-size: 3.5em;
+      }
 
-<body class="flex justify-center items-center h-screen">
-  <div class="tanggal-background">04 AGUSTUS 2025</div>
+      #kartu h1.text-4xl.card-text-cursive {
+        font-size: 5em;
+        line-height: 1;
+      }
 
-  <div id="kartu"
-    class="bg-teal-50/60 border border-teal-300 px-6 py-6 rounded-2xl shadow-xl animate__animated animate__backInDown w-11/12 max-w-sm text-center relative z-10">
-
-    <h1 class="text-3xl text-teal-800 card-text-cursive">Happy Birthday</h1>
-    <h1 class="text-4xl text-teal-600 font-bold animate__animated animate__pulse animate__infinite card-text-cursive">
-      Kevin
-    </h1>
-
-    <button
-      class="mt-6 p-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
-      onclick="ubahKartu()">Klik Disini !</button>
-
-    <audio id="birthdayAudio" src="happy_birthday.mp3" loop preload="auto"></audio>
-  </div>
-
-  <script>
-    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-
-    const kartu = document.getElementById("kartu");
-    const birthdayAudio = document.getElementById("birthdayAudio");
-    let isPlaying = false;
-
-    function ubahKartu() {
-      kartu.innerHTML = `
-        <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-yellow-500 card-text-cursive text-xl md:text-2xl" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-          Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
-          rezeki lancar, dan segala impian jadi kenyataan. Semoga panjang umur dan sehat selalu! 🎉🎂
-        </h1>
-        <h2 class="mt-3 animate__animated animate__fadeIn text-gray-700 card-text-cursive text-base md:text-lg">
-          - Dari : Papa -
-        </h2>
-        <button id="playMusicBtnInside"
-          class="p-3 bg-purple-500 text-white rounded-lg mt-5 hover:bg-purple-600 transition w-full text-lg font-semibold">
-          Putar Musik 🎵
-        </button>
-        <button onclick="refresh()"
-          class="p-3 bg-teal-400 text-white rounded-lg mt-5 hover:bg-teal-500 transition w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold">
-          Tutup
-        </button>`;
-
-      confetti({ particleCount: 150, spread: 90, origin: { y: 0.7 } });
-
-      const playBtn = document.getElementById("playMusicBtnInside");
-
-      birthdayAudio.play().then(() => {
-        isPlaying = true;
-        playBtn.textContent = "Hentikan Musik 🔇";
-      }).catch(err => {
-        console.warn("Autoplay blocked:", err);
-        isPlaying = false;
-        playBtn.textContent = "Putar Musik 🎵";
-      });
-
-      playBtn.addEventListener("click", () => {
-        if (isPlaying) {
-          birthdayAudio.pause();
-          playBtn.textContent = "Putar Musik 🎵";
-        } else {
-          birthdayAudio.play().then(() => {
-            playBtn.textContent = "Hentikan Musik 🔇";
-          }).catch(() => {
-            alert("Gagal memutar musik.");
-          });
+      @media (max-width: 600px) {
+        #kartu h1.text-3xl.card-text-cursive {
+          font-size: 2.5em;
         }
-        isPlaying = !isPlaying;
+        #kartu h1.text-4xl.card-text-cursive {
+          font-size: 3.5em;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    style="
+      background-image: url('foto_ultah_kevin.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center 59%;
+    "
+    class="flex justify-center h-screen items-center"
+  >
+    <div class="tanggal-background">04 AGUSTUS 2025</div>
+
+    <div
+      style="background-color: rgba(209, 250, 229, 0.6);"
+      class="border px-10 py-8 border-4 border-teal-300 shadow-xl shadow-teal-300 rounded-2xl text-center animate__animated animate__backInDown m-8 w-11/12 max-w-sm relative z-10"
+      id="kartu"
+    >
+      <h1 class="text-3xl text-teal-800 card-text-cursive">Happy Birthday</h1>
+      <h1
+        class="text-4xl text-teal-600 font-bold animate__animated animate__pulse animate__infinite card-text-cursive"
+      >
+        Kevin
+      </h1>
+
+      <button
+        class="p-3 bg-teal-500 text-white rounded-lg mt-6 hover:bg-teal-600 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
+        onclick="ubahKartu()"
+      >
+        Klik Disini !
+      </button>
+
+      <audio id="birthdayAudio" src="happy_birthday.mp3" loop preload="auto"></audio>
+    </div>
+
+    <script>
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
       });
-    }
 
-    function refresh() {
-      location.reload();
-    }
-  </script>
+      const kartu = document.getElementById("kartu");
+      const birthdayAudio = document.getElementById("birthdayAudio");
+      let isPlaying = false;
 
-  <div class="marquee-container">
-    <marquee behavior="scroll" direction="left" scrollamount="4">
-      <span class="marquee-text">Selamat Ulang Tahun Anakku Kevin! Semoga hari ini penuh kebahagiaan dan tawa! 🎉🎂</span>
-    </marquee>
-  </div>
-</body>
+      function ubahKartu() {
+        kartu.innerHTML = `
+          <h1 class="font-semibold text-wrap animate__animated animate__zoomIn text-yellow-500 card-text-cursive" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            Selamat ulang tahun, anakku Kevin! Semoga tahun ini makin banyak kebahagiaan,
+            rezeki lancar, dan segala impian jadi kenyataan. Semoga panjang umur dan sehat selalu! 🎉🎂
+          </h1>
+          <h2 class="mt-3 animate__animated animate__fadeIn text-gray-700 card-text-cursive">
+            - Dari : Papa -
+          </h2>
+          <button
+            id="playMusicBtnInside"
+            class="p-3 bg-purple-500 text-white rounded-lg mt-5 hover:bg-purple-600 transition ease-in w-full text-lg font-semibold"
+          >
+            Putar Musik 🎵
+          </button>
+          <button
+            class="p-3 bg-teal-400 text-white rounded-lg mt-5 hover:bg-teal-500 transition ease-in w-full animate__animated animate__delay-1s animate__tada text-lg font-semibold"
+            onclick="refresh()"
+          >
+            Tutup
+          </button>
+        `;
+
+        confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.7 },
+        });
+
+        setTimeout(() => {
+          const newPlayMusicBtn = document.getElementById("playMusicBtnInside");
+
+          birthdayAudio.play().then(() => {
+            isPlaying = true;
+            newPlayMusicBtn.textContent = "Hentikan Musik 🔇";
+          }).catch(error => {
+            console.warn("Autoplay gagal:", error);
+            alert("Browser mungkin memblokir pemutaran otomatis. Klik tombol 'Putar Musik' untuk memulai.");
+            isPlaying = false;
+            newPlayMusicBtn.textContent = "Putar Musik 🎵";
+          });
+
+          newPlayMusicBtn.addEventListener("click", () => {
+            if (isPlaying) {
+              birthdayAudio.pause();
+              newPlayMusicBtn.textContent = "Putar Musik 🎵";
+            } else {
+              birthdayAudio.play().then(() => {
+                newPlayMusicBtn.textContent = "Hentikan Musik 🔇";
+              }).catch(() => {
+                alert("Gagal memutar musik. Coba periksa file atau pengaturan browser.");
+              });
+            }
+            isPlaying = !isPlaying;
+          });
+        }, 100);
+      }
+
+      function refresh() {
+        location.reload();
+      }
+    </script>
+
+    <div class="marquee-container">
+      <marquee behavior="scroll" direction="left" scrollamount="5">
+        <span class="marquee-text">
+          Selamat Ulang Tahun Anakku Kevin! Semoga hari ini penuh kebahagiaan dan tawa! 🎉🎂
+        </span>
+      </marquee>
+    </div>
+  </body>
 </html>
 
